@@ -1,10 +1,12 @@
 ﻿using Archlinux.Api;
+using Archlinux.Api.Methods;
 class MainTest
 {
     public async static Task Main()
     {
         ArchlinuxApi archlinuxctx = new ArchlinuxApi();
-        archlinuxctx
+        var pkgdetails = new PackageDetails(archlinuxctx);
+        await pkgdetails.Get("/packages/core/x86_64/coreutils/json/");
     }
 
 }
