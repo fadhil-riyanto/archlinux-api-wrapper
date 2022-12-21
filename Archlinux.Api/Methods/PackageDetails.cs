@@ -3,19 +3,20 @@
 namespace Archlinux.Api.Methods
 {
     
-    class PackageDetails
+    public class PackageDetails
     {
         private ArchlinuxApi ctx;
         private string PkgName;
 
-        public PackageDetails(ArchlinuxApi ctx, string PkgName)
+        public PackageDetails(ArchlinuxApi ctx)
         {
             this.ctx = ctx;
-            this.PkgName = PkgName;
+            
         }
 
-        
-
-
+        public async Task Get(string PkgName)
+        {
+            await this.ctx.http.createReq(PkgName);
+        }
     }
 }
