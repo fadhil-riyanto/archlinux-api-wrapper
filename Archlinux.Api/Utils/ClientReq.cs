@@ -10,7 +10,7 @@ using Archlinux.Api.Constant;
 
 namespace Archlinux.Api.Utils.ClientReq
 {
-    class HttpInstance
+    public class HttpInstance
     {
         private HttpClient HttpClient;
         public HttpInstance()
@@ -21,9 +21,9 @@ namespace Archlinux.Api.Utils.ClientReq
             };
         }
 
-        public createReq(string path)
+        public async Task createReq(string path)
         {
-            
+            Console.WriteLine(await this.HttpClient.GetStringAsync(path));
         }
     }
 }
