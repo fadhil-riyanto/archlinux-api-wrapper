@@ -6,14 +6,15 @@ using Newtonsoft.Json;
 
 namespace Archlinux.Api.Methods
 {
-    
+
     public class PackageDetailsCtx
-    {   
-        public string PkgName {get; set;}
-        public ArchRepository Repo {get; set;}
-        public Arch architecture {get; set;}
+    {
+        public string PkgName { get; set; }
+        public ArchRepository Repo { get; set; }
+        public Arch architecture { get; set; }
+        public bool? files { get; set; }
     }
-    public class PackageDetails
+    public class PackageDetails : PackageDetailAll
     {
         private ArchlinuxApi ctx;
         private PackageDetailsCtx pkgcontext = new Archlinux.Api.Methods.PackageDetailsCtx();
@@ -21,7 +22,7 @@ namespace Archlinux.Api.Methods
         public PackageDetails(ArchlinuxApi ctx)
         {
             this.ctx = ctx;
-            
+
         }
 
         public PackageDetails Name(string PkgName)
@@ -42,15 +43,38 @@ namespace Archlinux.Api.Methods
             return this;
         }
 
-        public async Task<PackageDetailsResult> get()
+        public PackageDetails GetFiles(bool usefiles)
         {
-            HttpInstance res = await this.ctx.http.createReq($"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/");
+            this.pkgcontext.files = usefiles;
+            return this;
+        }
+
+        public async Task<PackageDetailAll> get()
+        {
+            string uristr;
+            if (this.pkgcontext.files == null)
+            {
+                uristr = $"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/";
+            }
+            else
+            {
+                uristr = $"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/files/json/";
+            }
+            HttpInstance res = await this.ctx.http.createReq(uristr);
 
             if (this.ctx.http.StatusCode() == System.Net.HttpStatusCode.NotFound)
             {
                 throw new NotFound();
-            } else {
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResult>(await this.ctx.http.GetString());
+            }
+            else
+            {
+                if (this.pkgcontext.files == null)
+                {
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResult>(await this.ctx.http.GetString());
+                } else {
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResultFile>(await this.ctx.http.GetString());
+                }
+                
             }
             //Console.WriteLine(await res.GetString());
         }
