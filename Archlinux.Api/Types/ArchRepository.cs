@@ -19,13 +19,13 @@ namespace Archlinux.Api.Types
             ins[repository] = this;
         }
 
-        public readonly ArchRepository Community = new ArchRepository("community");
-        public readonly ArchRepository community_testing = new ArchRepository("community-testing");
-        public readonly ArchRepository core = new ArchRepository("core");
-        public readonly ArchRepository extra = new ArchRepository("extra");
-        public readonly ArchRepository kde_unstable = new ArchRepository("kde-unstable");
-        public readonly ArchRepository multilib = new ArchRepository("multilib");
-        public readonly ArchRepository multilib_testing = new ArchRepository("multilib-testing");
-        public readonly ArchRepository testing = new ArchRepository("testing");
+        public static readonly ArchRepository community = new ArchRepository("community");
+        public static readonly ArchRepository community_testing = new ArchRepository("community-testing");
+        public static readonly ArchRepository core = new ArchRepository("core");
+        public static readonly ArchRepository extra = new ArchRepository("extra");
+        public static readonly ArchRepository kde_unstable = new ArchRepository("kde-unstable");
+        public static readonly ArchRepository multilib = new ArchRepository("multilib");
+        public static readonly ArchRepository multilib_testing = new ArchRepository("multilib-testing");
+        public static readonly ArchRepository testing = new ArchRepository("testing");
     }
 }
