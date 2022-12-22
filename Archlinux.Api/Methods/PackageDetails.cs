@@ -1,6 +1,7 @@
 using Archlinux.Api.Types;
 using Archlinux.Api.Exception;
 using Archlinux.Api.Utils;
+using Archlinux.Api.Types.Result;
 using Newtonsoft.Json;
 
 namespace Archlinux.Api.Methods
@@ -41,7 +42,7 @@ namespace Archlinux.Api.Methods
             return this;
         }
 
-        public async Task get()
+        public async Task<PackageDetailsResult> get()
         {
             HttpInstance res = await this.ctx.http.createReq($"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/");
 
@@ -49,9 +50,9 @@ namespace Archlinux.Api.Methods
             {
                 throw new NotFound();
             } else {
-                
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResult>(await this.ctx.http.GetString());
             }
-            Console.WriteLine(await res.GetString());
+            //Console.WriteLine(await res.GetString());
         }
     }
 }
