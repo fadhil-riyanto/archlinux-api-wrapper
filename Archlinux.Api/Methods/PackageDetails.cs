@@ -1,12 +1,18 @@
-
+using Archlinux.Api.Types;
 
 namespace Archlinux.Api.Methods
 {
     
+    public class PackageDetailsCtx
+    {   
+        public string PkgName {get; set;}
+        public ArchRepository Repo {get; set;}
+        public Arch architecture {get; set;}
+    }
     public class PackageDetails
     {
         private ArchlinuxApi ctx;
-        private string PkgName;
+        private PackageDetailsCtx pkgcontext = new Archlinux.Api.Methods.PackageDetailsCtx();
 
         public PackageDetails(ArchlinuxApi ctx)
         {
@@ -14,9 +20,22 @@ namespace Archlinux.Api.Methods
             
         }
 
-        public async Task Get(string PkgName)
+        public PackageDetails Name(string PkgName)
         {
-            await this.ctx.http.createReq(PkgName);
+            pkgcontext.PkgName = PkgName;
+            return this;
+        }
+
+        public PackageDetails Repository(ArchRepository Repo)
+        {
+            this.pkgcontext.Repo = Repo;
+            return this;
+        }
+
+        public PackageDetails Architecture(Arch arch)
+        {
+            this.pkgcontext.architecture = arch;
+            return this;
         }
     }
 }
