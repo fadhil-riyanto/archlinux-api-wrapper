@@ -8,7 +8,7 @@
 
 using Archlinux.Api.Constant;
 
-namespace Archlinux.Api.Utils.ClientReq
+namespace Archlinux.Api.Utils
 {
     public class HttpInstance
     {
@@ -22,14 +22,20 @@ namespace Archlinux.Api.Utils.ClientReq
             };
         }
 
-        public async Task<HttpResponseMessage> createReq(string path)
+        public async Task<HttpInstance> createReq(string path)
         {
             this._HttpResponseMessage = await this._HttpClient.GetAsync(path);
+            return this;
         }
 
         public System.Net.HttpStatusCode StatusCode()
         {
             return this._HttpResponseMessage.StatusCode;
+        }
+
+        public async Task<string> GetString()
+        {
+            return await this._HttpResponseMessage.Content.ReadAsStringAsync();
         }
 
 

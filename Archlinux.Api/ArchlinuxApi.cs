@@ -6,7 +6,7 @@
 *  github.com/fadhil-riyanto/archlinux-api-wrapper.git
 */
 
-using Archlinux.Api.Utils.ClientReq;
+using Archlinux.Api.Utils;
 using Archlinux.Api.Methods;
 
 namespace Archlinux.Api;

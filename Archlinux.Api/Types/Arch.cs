@@ -21,7 +21,7 @@ namespace Archlinux.Api.Types
 
         public override string ToString()
         {
-            return this.repo;
+            return this.architecture;
         }
 
         public static readonly Arch x86_64 = new Arch("x86_64");
