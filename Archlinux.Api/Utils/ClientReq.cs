@@ -12,18 +12,26 @@ namespace Archlinux.Api.Utils.ClientReq
 {
     public class HttpInstance
     {
-        private HttpClient HttpClient;
+        private HttpClient _HttpClient;
+        private HttpResponseMessage _HttpResponseMessage;
         public HttpInstance()
         {
-            this.HttpClient = new HttpClient() 
+            this._HttpClient = new HttpClient() 
             {
                 BaseAddress = new Uri(Endpoint.Url)
             };
         }
 
-        public async Task createReq(string path)
+        public async Task<HttpResponseMessage> createReq(string path)
         {
-            Console.WriteLine(await this.HttpClient.GetStringAsync(path));
+            this._HttpResponseMessage = await this._HttpClient.GetAsync(path);
         }
+
+        public System.Net.HttpStatusCode StatusCode()
+        {
+            return this._HttpResponseMessage.StatusCode;
+        }
+
+
     }
 }
