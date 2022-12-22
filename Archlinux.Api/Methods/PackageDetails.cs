@@ -1,4 +1,7 @@
 using Archlinux.Api.Types;
+using Archlinux.Api.Exception;
+using Archlinux.Api.Utils;
+using Newtonsoft.Json;
 
 namespace Archlinux.Api.Methods
 {
@@ -36,6 +39,19 @@ namespace Archlinux.Api.Methods
         {
             this.pkgcontext.architecture = arch;
             return this;
+        }
+
+        public async Task get()
+        {
+            HttpInstance res = await this.ctx.http.createReq($"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/");
+
+            if (this.ctx.http.StatusCode() == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new NotFound();
+            } else {
+                
+            }
+            Console.WriteLine(await res.GetString());
         }
     }
 }
