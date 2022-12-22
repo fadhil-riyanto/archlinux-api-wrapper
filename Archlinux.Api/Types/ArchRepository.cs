@@ -8,7 +8,7 @@
 
 namespace Archlinux.Api.Types
 {
-    class ArchRepository
+    public class ArchRepository
     {
         private readonly Dictionary<string, ArchRepository> ins = new Dictionary<string, ArchRepository>();
         private string repo;
