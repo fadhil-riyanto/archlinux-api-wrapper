@@ -19,6 +19,11 @@ namespace Archlinux.Api.Types
             ins[repository] = this;
         }
 
+        public override string ToString()
+        {
+            return this.repo;
+        }
+
         public static readonly ArchRepository community = new ArchRepository("community");
         public static readonly ArchRepository community_testing = new ArchRepository("community-testing");
         public static readonly ArchRepository core = new ArchRepository("core");
