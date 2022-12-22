@@ -6,8 +6,8 @@ class MainTest
     public async static Task Main()
     {
         ArchlinuxApi archlinuxctx = new ArchlinuxApi();
-        var pkgdetails = new PackageDetails(archlinuxctx);
-        await pkgdetails.Name("coreutils").Repository(ArchRepository.community).Architecture(Arch.x86_64).get();
+        PackageDetails pkgdetails = new PackageDetails(archlinuxctx);
+        await pkgdetails.Name("coreutils").Repository(ArchRepository.core).Architecture(Arch.x86_64).get();
     }
 
 }
