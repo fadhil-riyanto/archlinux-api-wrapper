@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 
 namespace Archlinux.Api.Types.Result
 {
+    #nullable enable
+    #nullable disable warnings
     public class PackageDetailAll
     {
         public virtual string pkgname { get; set; }
@@ -35,12 +37,14 @@ namespace Archlinux.Api.Types.Result
         // if use files params
 
         public virtual DateTime pkg_last_update { get; set; }
-        public virtual DateTime files_last_update { get; set; }
+        public virtual DateTime? files_last_update { get; set; }
         public virtual int files_count { get; set; }
         public virtual int dir_count { get; set; }
         public virtual string[] files { get; set; }
 
     }
+    #nullable enable
+    #nullable disable warnings
     public class PackageDetailsResult : PackageDetailAll
     {
         public override string pkgname { get; set; }
@@ -70,14 +74,15 @@ namespace Archlinux.Api.Types.Result
         public override string[] makedepends {get; set;}
         public override string[] checkdepends {get; set;}
     }
-
+    #nullable enable
+    #nullable disable warnings
     public class PackageDetailsResultFile : PackageDetailAll
     {
         public override string pkgname { get; set; }
         public override string repo { get; set; }
         public override string arch { get; set; }
         public override DateTime pkg_last_update { get; set; }
-        public override DateTime files_last_update { get; set; }
+        public override DateTime? files_last_update { get; set; }
         public override int files_count { get; set; }
         public override int dir_count { get; set; }
         public override string[] files { get; set; }
