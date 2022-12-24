@@ -19,8 +19,9 @@ namespace Archlinux.Api.Methods
         private ArchlinuxApi ctx;
         private PackageDetailsCtx pkgcontext = new Archlinux.Api.Methods.PackageDetailsCtx();
 
-        public PackageDetails(ArchlinuxApi ctx)
+        public PackageDetails(ArchlinuxApi ctx, bool usefiles = false)
         {
+            this.pkgcontext.files = usefiles;
             this.ctx = ctx;
 
         }
@@ -52,7 +53,7 @@ namespace Archlinux.Api.Methods
         public async Task<PackageDetailAll> get()
         {
             string uristr;
-            if (this.pkgcontext.files == null)
+            if (this.pkgcontext.files == false)
             {
                 uristr = $"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/";
             }
@@ -68,7 +69,7 @@ namespace Archlinux.Api.Methods
             }
             else
             {
-                if (this.pkgcontext.files == null || false)
+                if (this.pkgcontext.files == false)
                 {
                     return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResult>(await this.ctx.http.GetString());
                 } else {
