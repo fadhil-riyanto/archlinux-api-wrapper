@@ -68,7 +68,7 @@ namespace Archlinux.Api.Methods
             }
             else
             {
-                if (this.pkgcontext.files == null)
+                if (this.pkgcontext.files == null || false)
                 {
                     return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageDetailsResult>(await this.ctx.http.GetString());
                 } else {
