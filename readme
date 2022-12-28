@@ -1,0 +1,10 @@
+Hi
+
+this is simple dotnet c# library for fetch data from archlinux search web api.
+read more about archlinux web api interface
+at here >> https://wiki.archlinux.org/title/Official_repositories_web_interface
+
+nuger: https://www.nuget.org/packages/Archlinux.Api/1.0.0
+
+
+license: GPL-2.0 license 
