@@ -25,6 +25,7 @@ namespace Archlinux.Api.Types
         }
 
         public static readonly Arch x86_64 = new Arch("x86_64");
+        public static readonly Arch i686 = new Arch("i686");
         public static readonly Arch any = new Arch("any");
     }
 }
