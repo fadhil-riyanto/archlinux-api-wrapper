@@ -2,6 +2,7 @@ using Archlinux.Api.Types;
 using Archlinux.Api.Exception;
 using Archlinux.Api.Utils;
 using Archlinux.Api.Types.Result;
+using Archlinux.Api.Constant;
 using Newtonsoft.Json;
 
 namespace Archlinux.Api.Methods
@@ -55,11 +56,11 @@ namespace Archlinux.Api.Methods
             string uristr;
             if (this.pkgcontext.files == false)
             {
-                uristr = $"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/";
+                uristr = $"{Base.BasePackageInformation}/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/json/";
             }
             else
             {
-                uristr = $"/packages/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/files/json/";
+                uristr = $"{Base.BasePackageInformation}/{this.pkgcontext.Repo.ToString()}/{this.pkgcontext.architecture.ToString()}/{this.pkgcontext.PkgName.ToString()}/files/json/";
             }
             HttpInstance res = await this.ctx.http.createReq(uristr);
 
