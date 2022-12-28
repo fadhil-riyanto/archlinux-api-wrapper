@@ -14,7 +14,7 @@ namespace Archlinux.Api.Constant
     {
         public static string BasePackageInformation = "/packages";
 
-        public static string BasePackageQuery = "/packages/search/json";
+        public static string BasePackageQuery = "/packages/search/json/?";
 
 
 
