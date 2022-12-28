@@ -24,6 +24,15 @@ namespace Archlinux.Api.Types
             return this.repo;
         }
 
+        public string PascalCase()
+        {
+            return string.Join("", this.repo.Split('-')
+                         .Select(w => w.Trim())
+                         .Where(w => w.Length > 0)
+                         .Select(w => w.Substring(0, 1).ToUpper() + w.Substring(1).ToLower()));
+        }
+
+
         public static readonly ArchRepository community = new ArchRepository("community");
         public static readonly ArchRepository community_testing = new ArchRepository("community-testing");
         public static readonly ArchRepository core = new ArchRepository("core");
