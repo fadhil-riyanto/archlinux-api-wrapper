@@ -4,7 +4,25 @@ this is simple dotnet c# library for fetch data from archlinux search web api.
 read more about archlinux web api interface
 at here >> https://wiki.archlinux.org/title/Official_repositories_web_interface
 
-nuger: https://www.nuget.org/packages/Archlinux.Api/1.0.0
+example:
+1. get the package info
+    ArchlinuxApi archlinuxctx = new ArchlinuxApi();
+`   PackageDetails pkgdetails = new PackageDetails(archlinuxctx, usefiles: false);
+    PackageDetailAll res = await pkgdetails.Name("linux").Repository(ArchRepository.core).Architecture(Arch.x86_64).get();
+    Console.WriteLine(res.pkgname);
 
+note: the usefiles variable is parameter. see also at here 
+https://wiki.archlinux.org/title/Official_repositories_web_interface#Files
+
+2. search the package
+    PackageSearch pkgsearch = new PackageSearch(archlinuxctx);
+    PackageSearchResult pkgres = await pkgsearch.Query("linux").Repository(ArchRepository.FromString("core")).get(1);
+
+    Console.WriteLine(pkgres.results);
+
+note: pkgres.results is an array, you can literate it. also the .get(1) is a parameter the page that you want get to, the archlinux search is limited 250 result each request, so you can pass the page that you want to get it
+
+
+nuget: https://www.nuget.org/packages/Archlinux.Api
 
 license: GPL-2.0 license 
