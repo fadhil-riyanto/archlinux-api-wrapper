@@ -108,8 +108,9 @@ namespace Archlinux.Api.Methods
             return this;
         }
 
-        public async Task<PackageSearchResult> get()
+        public async Task<PackageSearchResult> get(int page = 1)
         {
+            this.http.append("page", page.ToString());
             HttpInstance res = await this.ctx.http.createReq(Base.BasePackageQuery + this.http.ToString());
 
             if (this.ctx.http.StatusCode() == System.Net.HttpStatusCode.NotFound)

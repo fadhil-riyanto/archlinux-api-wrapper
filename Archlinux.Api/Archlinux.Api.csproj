@@ -7,7 +7,7 @@
     <Authors>Fadhil Riyanto</Authors>
     <PackageProjectUrl>https://github.com/fadhil-riyanto/archlinux-api-wrapper</PackageProjectUrl>
     <Description>a api wrapper for archlinux web search page</Description>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

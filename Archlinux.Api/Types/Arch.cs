@@ -24,6 +24,11 @@ namespace Archlinux.Api.Types
             return this.architecture;
         }
 
+        public static Arch FromString(string reponame)
+        {
+            return new Arch(reponame);
+        }
+
         public static readonly Arch x86_64 = new Arch("x86_64");
         public static readonly Arch i686 = new Arch("i686");
         public static readonly Arch any = new Arch("any");

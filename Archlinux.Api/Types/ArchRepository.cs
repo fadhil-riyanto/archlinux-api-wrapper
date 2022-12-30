@@ -24,6 +24,11 @@ namespace Archlinux.Api.Types
             return this.repo;
         }
 
+        public static ArchRepository FromString(string reponame)
+        {
+            return new ArchRepository(reponame);
+        }
+
         public string PascalCase()
         {
             return string.Join("", this.repo.Split('-')
