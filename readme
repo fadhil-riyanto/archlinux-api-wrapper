@@ -7,7 +7,7 @@ at here >> https://wiki.archlinux.org/title/Official_repositories_web_interface
 example:
 1. get the package info
     ArchlinuxApi archlinuxctx = new ArchlinuxApi();
-`   PackageDetails pkgdetails = new PackageDetails(archlinuxctx, usefiles: false);
+    PackageDetails pkgdetails = new PackageDetails(archlinuxctx, usefiles: false);
     PackageDetailAll res = await pkgdetails.Name("linux").Repository(ArchRepository.core).Architecture(Arch.x86_64).get();
     Console.WriteLine(res.pkgname);
 
