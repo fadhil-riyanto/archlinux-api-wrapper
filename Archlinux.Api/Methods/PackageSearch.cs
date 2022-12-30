@@ -119,6 +119,8 @@ namespace Archlinux.Api.Methods
             }
             else
             {
+                Console.WriteLine(await this.ctx.http.GetString());
+                //return null;
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<PackageSearchResult>(await this.ctx.http.GetString());
             }
         }

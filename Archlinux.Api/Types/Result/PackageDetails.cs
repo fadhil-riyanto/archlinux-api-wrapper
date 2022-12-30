@@ -13,12 +13,12 @@ namespace Archlinux.Api.Types.Result
         public virtual string arch { get; set; }
         public virtual string pkgver { get; set; }
         public virtual string pkgrel { get; set; }
-        public virtual int epoch { get; set; }
+        public virtual Int64 epoch { get; set; }
         public virtual string pkgdesc { get; set; }
         public virtual string url { get; set; }
         public virtual string filename { get; set; }
-        public virtual int compressed_size { get; set; }
-        public virtual int installed_size { get; set; }
+        public virtual Int64 compressed_size { get; set; }
+        public virtual Int64 installed_size { get; set; }
         public virtual DateTime build_date { get; set; }
         public virtual DateTime last_update { get; set; }
         public virtual string flag_date { get; set; }
@@ -38,8 +38,8 @@ namespace Archlinux.Api.Types.Result
 
         public virtual DateTime pkg_last_update { get; set; }
         public virtual DateTime? files_last_update { get; set; }
-        public virtual int files_count { get; set; }
-        public virtual int dir_count { get; set; }
+        public virtual Int64 files_count { get; set; }
+        public virtual Int64 dir_count { get; set; }
         public virtual string[] files { get; set; }
 
     }
@@ -53,12 +53,12 @@ namespace Archlinux.Api.Types.Result
         public override string arch { get; set; }
         public override string pkgver { get; set; }
         public override string pkgrel { get; set; }
-        public override int epoch { get; set; }
+        public override Int64 epoch { get; set; }
         public override string pkgdesc { get; set; }
         public override string url { get; set; }
         public override string filename { get; set; }
-        public override int compressed_size { get; set; }
-        public override int installed_size { get; set; }
+        public override Int64 compressed_size { get; set; }
+        public override Int64 installed_size { get; set; }
         public override DateTime build_date { get; set; }
         public override DateTime last_update { get; set; }
         public override string flag_date { get; set; }
@@ -83,8 +83,8 @@ namespace Archlinux.Api.Types.Result
         public override string arch { get; set; }
         public override DateTime pkg_last_update { get; set; }
         public override DateTime? files_last_update { get; set; }
-        public override int files_count { get; set; }
-        public override int dir_count { get; set; }
+        public override Int64 files_count { get; set; }
+        public override Int64 dir_count { get; set; }
         public override string[] files { get; set; }
     }
 }
